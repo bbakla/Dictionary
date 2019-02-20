@@ -19,8 +19,8 @@ build:
   stage: build
   script:
     - sleep 15
-    - mongod --version
-   # - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+   # - mongod --version
+    - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
     #- mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
     - ./gradlew build
   services:
