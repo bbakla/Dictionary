@@ -3,6 +3,10 @@ image: java:8
 stages:
   - build
 
+services:
+  - mongo
+
+
 
 build:
   stage: build
