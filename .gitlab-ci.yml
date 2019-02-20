@@ -17,11 +17,13 @@ stages:
 
 build:
   stage: build
+  variables:
+    MONGODB_URI: mongodb://mongo:27017/dictionary
   script:
     - sleep 15
    # - mongod --version
-    - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
-    - mongo mongodb://mongo:27017/dictionary
+  #  - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+   # - mongo mongodb://mongo:27017/dictionary
     #- mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
     - ./gradlew build
   services:
