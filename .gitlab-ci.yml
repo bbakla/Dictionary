@@ -8,8 +8,7 @@ variables:
 stages:
   - build
 
-services:
-  - mongo:latest
+
 
 #before_script:
 #  - sleep 15
@@ -20,10 +19,12 @@ build:
   stage: build
   script:
     - sleep 15
-    - "mongod --version"
+    - mongod --version
    # - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
     #- mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
     - ./gradlew build
+  services:
+    - mongo:latest
   artifacts:
     paths:
       - build/libs/Dictionary-0.0.1-SNAPSHOT.jar
