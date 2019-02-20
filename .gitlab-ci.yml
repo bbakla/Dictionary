@@ -9,7 +9,7 @@ stages:
   - build
 
 services:
-  - mongo
+  - mongo:latest
 
 #before_script:
 #  - sleep 15
