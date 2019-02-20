@@ -11,15 +11,17 @@ stages:
 services:
   - mongo
 
-before_script:
-  - sleep 15
-  - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+#before_script:
+#  - sleep 15
+#  - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 
 
 build:
   stage: build
   script:
-    - - mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
+    - sleep 15
+    - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+    #- mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
     - ./gradlew build
   artifacts:
     paths:
