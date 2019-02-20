@@ -1,16 +1,26 @@
 image: java:8
 
+variables:
+  DB_HOST: mongo
+
+
+
 stages:
   - build
 
 services:
   - mongo
 
+before_script:
+  - sleep 15
+  - mongo dictionary --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 
 
 build:
   stage: build
-  script: ./gradlew build
+  script:
+    - - mongoimport --host $DB_HOST --db reach-engine --collection Dictionary --type json --file ./mongo-seed/init.json --jsonArray 
+    - ./gradlew build
   artifacts:
     paths:
       - build/libs/Dictionary-0.0.1-SNAPSHOT.jar
