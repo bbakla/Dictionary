@@ -1,4 +1,6 @@
 language: java
+jdk: openjdk10
+
 script: 
  - chmod +x gradlew
  - ./gradlew build --scan -s
