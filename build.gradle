@@ -9,6 +9,11 @@ group = 'com.dictionary'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+}
+
 repositories {
 	mavenCentral()
 }
