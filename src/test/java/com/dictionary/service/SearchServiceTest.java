@@ -2,7 +2,6 @@ package com.dictionary.service;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
-import javax.validation.constraints.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
