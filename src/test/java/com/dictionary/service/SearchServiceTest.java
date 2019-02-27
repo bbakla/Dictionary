@@ -44,11 +44,11 @@ public class SearchServiceTest {
     return Stream.of(
         Arguments.of(new Word("beleidigt sein", "to be offended", "rencide olmak",
                       null, Arrays.asList("Er fühlt sich in seiner Ehre beleidigt sein."),
-                      Arrays.asList("verb", "feeling"), null, Arrays.asList(new Word("ein diches Fell haben")))),
+                      Arrays.asList("verb", "feeling"), null, Arrays.asList(new String("ein diches Fell haben")))),
         
         Arguments.of(new Word("sich weigern", "to refuse", "reddetmek;yapmamak istedigini belirtmek",
                       null, Arrays.asList("Das Mädchen weigert sich Danke zu sagen"),
-                      Arrays.asList("verb", "reflexive"), Arrays.asList(new Word("ablehnen"), new Word("zusagen")), null))
+                      Arrays.asList("verb", "reflexive"), Arrays.asList(new String("ablehnen"), new String("zusagen")), null))
 
     );
 

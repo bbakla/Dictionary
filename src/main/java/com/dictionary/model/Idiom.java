@@ -6,27 +6,27 @@ import org.springframework.data.annotation.Id;
 public class Idiom {
 
   @Id
-  public String expression;
+  public Word expression;
   
-  public List<String> exampleSentences;
-  public List<String> tags;
+  public List<Word> exampleSentences;
+  public List<Word> tags;
 
-  public String getExpression() {
+  public Word getExpression() {
     return expression;
   }
-  public void setExpression(String expression) {
+  public void setExpression(Word expression) {
     this.expression = expression;
   }
-  public List<String> getExampleSentences() {
+  public List<Word> getExampleSentences() {
     return exampleSentences;
   }
-  public void setExampleSentences(List<String> exampleSentences) {
+  public void setExampleSentences(List<Word> exampleSentences) {
     this.exampleSentences = exampleSentences;
   }
-  public List<String> getTags() {
+  public List<Word> getTags() {
     return tags;
   }
-  public void setTags(List<String> tags) {
+  public void setTags(List<Word> tags) {
     this.tags = tags;
   }
   

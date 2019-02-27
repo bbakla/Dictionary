@@ -18,8 +18,8 @@ public class Word {
   private String explanationInGerman;
   private List<String> exampleSentences;
   private List<String> tags;
-  private List<Word> synonmys;
-  private List<Word> oppositeMeanings;
+  private List<String> synonmys;
+  private List<String> oppositeMeanings;
 
 
   public Word(String word) {
@@ -30,8 +30,8 @@ public class Word {
   }
   
   public Word(String word, String translationInEnglish, String translationInTurkish, String explanationInGerman,
-       List<String> exampleSentences, List<String> tags, List<Word> synonmys,
-      List<Word> oppositeMeanings) {
+       List<String> exampleSentences, List<String> tags, List<String> synonmys,
+      List<String> oppositeMeanings) {
     super();
     this.word = word;
     this.translationInEnglish = translationInEnglish;
@@ -112,21 +112,21 @@ public class Word {
     return this;
   }
 
-  public List<Word> getSynonmys() {
+  public List<String> getSynonmys() {
     return synonmys;
   }
 
-  public Word synonmys(List<Word> synonmys) {
+  public Word synonmys(List<String> synonmys) {
     this.synonmys = synonmys;
     
     return this;
   }
 
-  public List<Word> getOppositeMeanings() {
+  public List<String> getOppositeMeanings() {
     return oppositeMeanings;
   }
 
-  public Word oppositeMeanings(List<Word> oppositeMeanings) {
+  public Word oppositeMeanings(List<String> oppositeMeanings) {
     this.oppositeMeanings = oppositeMeanings;
     
     return this;

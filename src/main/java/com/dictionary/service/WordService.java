@@ -19,8 +19,4 @@ public class WordService {
   public Word saveWord(Word word) {
     return wordRepository.save(word);
   }
-
- 
-  
-  
 }
