@@ -1,9 +1,6 @@
 package com.dictionary.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.nullValue;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.validation.constraints.NotNull;
 import org.junit.jupiter.api.Test;
