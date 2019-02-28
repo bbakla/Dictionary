@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.dictionary.model.Word;
+import com.dictionary.model.WordType;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -20,7 +21,7 @@ public class WordRepositoryTest {
 	
 	@Test
 	public void shouldBeAbleToSave() {
-		Word word = new Word("sich ausdrücken");
+		Word word = new Word("sich ausdrücken", WordType.VERB);
 		
 		word.translationInEnglish("express yourself");
 		word.addExampleSentence("Ich kann mich noch nicht auf Deutsch ausdrücken");
