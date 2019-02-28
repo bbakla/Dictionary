@@ -2,7 +2,6 @@ package com.dictionary.model;
 
 import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
-import com.dictionary.service.Artikel;
 
 @Document(collection="name")
 public class Name extends Word {

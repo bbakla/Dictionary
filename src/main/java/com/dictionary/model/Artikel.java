@@ -1,4 +1,4 @@
-package com.dictionary.service;
+package com.dictionary.model;
 
 public enum Artikel {
 
