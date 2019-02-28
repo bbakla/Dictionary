@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.dictionary.model.Word;
+import com.dictionary.model.WordType;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -40,11 +41,11 @@ public class SearchServiceTest {
     return Stream.of(
         Arguments.of(new Word("beleidigt sein", "to be offended", "rencide olmak",
                       null, Arrays.asList("Er fühlt sich in seiner Ehre beleidigt sein."),
-                      Arrays.asList("verb", "feeling"), null, Arrays.asList(new String("ein diches Fell haben")))),
+                      Arrays.asList("verb", "feeling"), null, Arrays.asList(new String("ein diches Fell haben")), WordType.VERB)),
         
         Arguments.of(new Word("sich weigern", "to refuse", "reddetmek;yapmamak istedigini belirtmek",
                       null, Arrays.asList("Das Mädchen weigert sich Danke zu sagen"),
-                      Arrays.asList("verb", "reflexive"), Arrays.asList(new String("ablehnen"), new String("zusagen")), null))
+                      Arrays.asList("verb", "reflexive"), Arrays.asList(new String("ablehnen"), new String("zusagen")), null, WordType.VERB))
 
     );
 

@@ -6,13 +6,16 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection="word")
 public class Word {
 
   @Id
   @NotNull
   private String word;
 
+  @NotNull
+  private WordType wordType;
+  
   private String translationInEnglish;
   private String translationInTurkish;
   private String explanationInGerman;
@@ -22,18 +25,26 @@ public class Word {
   private List<String> oppositeMeanings;
 
 
-  public Word(String word) {
+  public Word() {
+    
+  }
+  
+  public Word(String word, WordType wordType) {
     this.word = word;
+    this.wordType = wordType;
     this.exampleSentences = new ArrayList<>();
     this.tags = new ArrayList<>();
-    oppositeMeanings = new ArrayList<>();
+    this.synonmys = new ArrayList<>();
+    this.oppositeMeanings = new ArrayList<>();
+    this.oppositeMeanings = new ArrayList<>();
   }
   
   public Word(String word, String translationInEnglish, String translationInTurkish, String explanationInGerman,
        List<String> exampleSentences, List<String> tags, List<String> synonmys,
-      List<String> oppositeMeanings) {
+      List<String> oppositeMeanings, WordType wordType) {
     super();
     this.word = word;
+    this.wordType = wordType;
     this.translationInEnglish = translationInEnglish;
     this.translationInTurkish = translationInTurkish;
     this.explanationInGerman = explanationInGerman;
@@ -50,6 +61,16 @@ public class Word {
 
   public Word word(String word) {
     this.word = word;
+    
+    return this;
+  }
+  
+  public WordType getWordType() {
+    return wordType;
+  }
+
+  public Word wordType(WordType wordType) {
+    this.wordType = wordType;
     
     return this;
   }
@@ -98,8 +119,10 @@ public class Word {
     this.exampleSentences.add(exampleSentence);
   }
 
-  public void addTag(String tag) {
+  public Word addTag(String tag) {
     this.tags.add(tag);
+    
+    return this;
   }
 
   public List<String> getTags() {
@@ -115,6 +138,12 @@ public class Word {
   public List<String> getSynonmys() {
     return synonmys;
   }
+  
+  public Word addSynonmys(String synonmys) {
+    this.synonmys.add(synonmys);
+    
+    return this;
+  }
 
   public Word synonmys(List<String> synonmys) {
     this.synonmys = synonmys;
@@ -124,6 +153,12 @@ public class Word {
 
   public List<String> getOppositeMeanings() {
     return oppositeMeanings;
+  }
+  
+  public Word addOppositeMeaning(String word) {
+    this.oppositeMeanings.add(word);
+    
+    return this;
   }
 
   public Word oppositeMeanings(List<String> oppositeMeanings) {

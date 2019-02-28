@@ -5,9 +5,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.stereotype.Repository;
 
 import com.dictionary.model.Word;
+import java.util.List;
 
 @Repository
 public interface WordRepository extends MongoRepository<Word, String>{
-	
+	List<Word> findByTagsIn(List<String> tags);
 
 }
