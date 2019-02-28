@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="word")
-public class Word {
+public abstract class Word {
 
   @Id
   @NotNull
@@ -23,6 +21,7 @@ public class Word {
   private List<String> tags;
   private List<String> synonmys;
   private List<String> oppositeMeanings;
+  private String note;
 
 
   public Word() {
@@ -163,6 +162,16 @@ public class Word {
 
   public Word oppositeMeanings(List<String> oppositeMeanings) {
     this.oppositeMeanings = oppositeMeanings;
+    
+    return this;
+  }
+
+  public String getNote() {
+    return note;
+  }
+
+  public Word note(String note) {
+    this.note = note;
     
     return this;
   }
