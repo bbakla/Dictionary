@@ -1,9 +1,11 @@
 package com.dictionary.model;
 
 import java.util.List;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection="name")
+@Entity
+@Table
 public class Name extends Word {
   
   private String plural;
@@ -19,8 +21,8 @@ public class Name extends Word {
   }
 
   public Name(String word, String translationInEnglish, String translationInTurkish,
-      String explanationInGerman, List<String> exampleSentences, List<String> tags,
-      List<String> synonmys, List<String> oppositeMeanings, Artikel artikel, String plural) {
+      String explanationInGerman, List<String> exampleSentences, List<Tag> tags,
+      List<Word> synonmys, List<Word> oppositeMeanings, Artikel artikel, String plural) {
     
     super(word, translationInEnglish, translationInTurkish, explanationInGerman, exampleSentences,
         tags, synonmys, oppositeMeanings, WordType.NAME);

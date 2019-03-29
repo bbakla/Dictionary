@@ -3,9 +3,11 @@ package com.dictionary.model;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Document(collection="verb")
+@Entity
+@Table
 public class Verb extends Word {
   private Map<Tense, String> tenseForms;
 
@@ -15,8 +17,8 @@ public class Verb extends Word {
   }
 
   public Verb(String word, String translationInEnglish, String translationInTurkish,
-      String explanationInGerman, List<String> exampleSentences, List<String> tags,
-      List<String> synonmys, List<String> oppositeMeanings, Map<Tense, String> tenseForms) {
+      String explanationInGerman, List<String> exampleSentences, List<Tag> tags,
+      List<Word> synonmys, List<Word> oppositeMeanings, Map<Tense, String> tenseForms) {
     
     super(word, translationInEnglish, translationInTurkish, explanationInGerman, exampleSentences,
         tags, synonmys, oppositeMeanings, WordType.VERB);

@@ -2,25 +2,42 @@ package com.dictionary.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 
+@MappedSuperclass
 public abstract class Word {
 
   @Id
-  @NotNull
+  @GeneratedValue(strategy=GenerationType.AUTO)
   private String word;
 
   @NotNull
+  @Enumerated
+  @Column(length = 8)
   private WordType wordType;
   
   private String translationInEnglish;
   private String translationInTurkish;
   private String explanationInGerman;
+  
+  
   private List<String> exampleSentences;
-  private List<String> tags;
-  private List<String> synonmys;
-  private List<String> oppositeMeanings;
+  
+  @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="word")
+  @JoinColumn(name="word_id")
+  private List<Tag> tags;
+//  private List<Word> synonmys;
+//  private List<Word> oppositeMeanings;
   private String note;
 
 
@@ -33,14 +50,14 @@ public abstract class Word {
     this.wordType = wordType;
     this.exampleSentences = new ArrayList<>();
     this.tags = new ArrayList<>();
-    this.synonmys = new ArrayList<>();
-    this.oppositeMeanings = new ArrayList<>();
-    this.oppositeMeanings = new ArrayList<>();
+//    this.synonmys = new ArrayList<>();
+//    this.oppositeMeanings = new ArrayList<>();
+//    this.oppositeMeanings = new ArrayList<>();
   }
   
   public Word(String word, String translationInEnglish, String translationInTurkish, String explanationInGerman,
-       List<String> exampleSentences, List<String> tags, List<String> synonmys,
-      List<String> oppositeMeanings, WordType wordType) {
+       List<String> exampleSentences, List<Tag> tags, List<Word> synonmys,
+      List<Word> oppositeMeanings, WordType wordType) {
     super();
     this.word = word;
     this.wordType = wordType;
@@ -49,8 +66,8 @@ public abstract class Word {
     this.explanationInGerman = explanationInGerman;
     this.exampleSentences = exampleSentences;
     this.tags = tags;
-    this.synonmys = synonmys;
-    this.oppositeMeanings = oppositeMeanings;
+//    this.synonmys = synonmys;
+//    this.oppositeMeanings = oppositeMeanings;
   }
 
 
@@ -118,53 +135,55 @@ public abstract class Word {
     this.exampleSentences.add(exampleSentence);
   }
 
-  public Word addTag(String tag) {
+  public Word addTag(Tag tag) {
     this.tags.add(tag);
     
     return this;
   }
 
-  public List<String> getTags() {
+  public List<Tag> getTags() {
     return tags;
   }
 
-  public Word tags(List<String> tags) {
+  public Word tags(List<Tag> tags) {
     this.tags = tags;
     
     return this;
   }
 
-  public List<String> getSynonmys() {
+  /*
+  public List<Word> getSynonmys() {
     return synonmys;
   }
   
-  public Word addSynonmys(String synonmys) {
+  public Word addSynonmys(Word synonmys) {
     this.synonmys.add(synonmys);
     
     return this;
   }
 
-  public Word synonmys(List<String> synonmys) {
+  public Word synonmys(List<Word> synonmys) {
     this.synonmys = synonmys;
     
     return this;
   }
 
-  public List<String> getOppositeMeanings() {
+  public List<Word> getOppositeMeanings() {
     return oppositeMeanings;
   }
   
-  public Word addOppositeMeaning(String word) {
+  public Word addOppositeMeaning(Word word) {
     this.oppositeMeanings.add(word);
     
     return this;
   }
 
-  public Word oppositeMeanings(List<String> oppositeMeanings) {
+  public Word oppositeMeanings(List<Word> oppositeMeanings) {
     this.oppositeMeanings = oppositeMeanings;
     
     return this;
   }
+  */
 
   public String getNote() {
     return note;

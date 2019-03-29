@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.dictionary.model.Artikel;
 import com.dictionary.model.Name;
+import com.dictionary.model.Tag;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -39,11 +40,11 @@ public class NameRepositoryTest {
     return Stream.of(
         Arguments.of(new Name("Puppe", "puppet", null, null,
             null,
-            Arrays.asList("name", "regelmaﬂig"), null, null, Artikel.DIE, "Puppen")),
+            Arrays.asList(new Tag("name"), new Tag("regelmaﬂig")), null, null, Artikel.DIE, "Puppen")),
 
         Arguments.of(new Name("kanitschen", "rabbit", null,
                 null, null,
-                Arrays.asList("name", "animal", "regelmaﬂig"),
+                Arrays.asList(new Tag("name"), new Tag("animal"), new Tag("regelmaﬂig")),
                 null, null, Artikel.DAS, "Kanitschen"))
         );
   }

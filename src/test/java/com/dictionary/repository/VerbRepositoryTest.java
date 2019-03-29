@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import com.dictionary.model.Tag;
 import com.dictionary.model.Tense;
 import com.dictionary.model.Verb;
 
@@ -43,14 +44,14 @@ public class VerbRepositoryTest {
     return Stream.of(
         Arguments.of(new Verb("beleidigt sein", "to be offended", "rencide olmak", null,
             Arrays.asList("Er fühlt sich in seiner Ehre beleidigt sein."),
-            Arrays.asList("verb", "feeling"), null, Arrays.asList("ein diches Fell haben"), null
+            Arrays.asList(new Tag("verb"), new Tag("feeling")), null, Arrays.asList(new Verb("ein diches Fell haben")), null
         )),
 
         Arguments
             .of(new Verb("sich weigern", "to refuse", "reddetmek;yapmamak istedigini belirtmek",
                 null, Arrays.asList("Das Mädchen weigert sich Danke zu sagen"),
-                Arrays.asList("verb", "reflexive"),
-                Arrays.asList(new String("ablehnen"), new String("zusagen")), null, tenses))
+                Arrays.asList(new Tag("verb"), new Tag("reflexive")),
+                Arrays.asList(new Verb("ablehnen"), new Verb("zusagen")), null, tenses))
     );
 }
 }

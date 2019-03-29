@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.dictionary.model.Artikel;
 import com.dictionary.model.Name;
+import com.dictionary.model.Tag;
 import com.dictionary.repository.NameRepository;
 
 @ExtendWith(SpringExtension.class)
@@ -85,8 +86,8 @@ public class NameServiceTest {
     
     Name name = new Name("Schmetterling", Artikel.DER);
     name.translationInEnglish("not willing to do")
-    .addTag("verb")
-    .addTag("reflexive")
+    .addTag(new Tag("verb"))
+    .addTag(new Tag("reflexive"))
     .addExampleSentence("ich habe gewiegert nein zu sagen");
     
     nameService.saveName(name);
@@ -95,7 +96,7 @@ public class NameServiceTest {
 
     String newTag = "newTag";
 
-    name.addTag(newTag);
+    name.addTag(new Tag(newTag));
 
     Name updatedName = nameService.updateName(name);
 
@@ -107,15 +108,17 @@ public class NameServiceTest {
   public void canListNamesByTag() {
     Name name = new Name("Puppe", Artikel.DIE);
     name.translationInEnglish("puppet");
-    name.addTag("name").addTag("anotherTag");
+    name.addTag(new Tag("name")).addTag(new Tag("anotherTag"));
     nameService.saveName(name);
     
     Name name2 = new Name("hopen", Artikel.DAS);
-    name2.translationInEnglish("honk").addTag("name").addTag("regelmaﬂig");
+    name2.translationInEnglish("honk").addTag(new Tag("name")).addTag(new Tag("regelmaﬂig"));
     nameService.saveName(name2);
     
     Name name3 = new Name("bef¸rworten", Artikel.DAS);
-    name3.translationInEnglish("to support").addTag("verb").addTag("regelmaﬂig").addTag("trannbare");
+    name3.translationInEnglish("to support").addTag(new Tag("verb"))
+                                            .addTag(new Tag("regelmaﬂig"))
+                                            .addTag(new Tag("trannbare"));
     nameService.saveName(name3);
     
     List<Name> namesInRepo = nameService.getAllNames();
@@ -132,15 +135,16 @@ public class NameServiceTest {
   public void canListNamesByFilteringMultipleTags() {
     Name name = new Name("Puppe", Artikel.DAS);
     name.translationInEnglish("puppet");
-    name.addTag("name").addTag("anotherTag");
+    name.addTag(new Tag("name")).addTag(new Tag("anotherTag"));
     nameService.saveName(name);
     
     Name name2 = new Name("hopen", Artikel.DER);
-    name2.translationInEnglish("honk").addTag("verb").addTag("regelmaﬂig");
+    name2.translationInEnglish("honk").addTag(new Tag("verb")).addTag(new Tag("regelmaﬂig"));
     nameService.saveName(name2);
     
     Name name3 = new Name("bef¸rworten", Artikel.DIE);
-    name3.translationInEnglish("to support").addTag("verb").addTag("regelmaﬂig").addTag("trannbare");
+    name3.translationInEnglish("to support").addTag(new Tag("verb"))
+                                            .addTag(new Tag("regelmaﬂig")).addTag(new Tag("trannbare"));
     nameService.saveName(name3);
     
     List<Name> namesInRepo = nameService.getAllNames();
@@ -153,15 +157,14 @@ public class NameServiceTest {
   
   private static Stream<Arguments> names() {
     return Stream.of(
-        Arguments.of((new Name("Puppe", "puppet", null, null,
+        Arguments.of(new Name("Puppe", "puppet", null, null,
             null,
-            Arrays.asList("name", "regelmaﬂig"), null, null, Artikel.DIE, "Puppen")),
+            Arrays.asList(new Tag("name"), new Tag("regelmaﬂig")), null, null, Artikel.DIE, "Puppen")),
 
-        Arguments
-            .of(new Name("kanitschen", "rabbit", null,
+        Arguments.of(new Name("kanitschen", "rabbit", null,
                 null, null,
-                Arrays.asList("name", "animal", "regelmaﬂig"),
-                null, null, Artikel.DAS, "Kanitschen")))
+                Arrays.asList(new Tag("name"), new Tag("animal"), new Tag("regelmaﬂig")),
+                null, null, Artikel.DAS, "Kanitschen"))
         );
   }
 
