@@ -20,8 +20,10 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
     hibernate:
-      namig-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-      ddl-auto: create-drop
+      #naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: create
 
 server:
   port: 8899

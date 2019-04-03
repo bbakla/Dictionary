@@ -9,11 +9,12 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Verb extends Word {
-  private Map<Tense, String> tenseForms;
+  
+//	private Map<Tense, String> tenseForms;
 
   public Verb(String word) {
     super(word, WordType.VERB);
-    tenseForms = new EnumMap<>(Tense.class);
+//    tenseForms = new EnumMap<>(Tense.class);
   }
 
   public Verb(String word, String translationInEnglish, String translationInTurkish,
@@ -23,22 +24,22 @@ public class Verb extends Word {
     super(word, translationInEnglish, translationInTurkish, explanationInGerman, exampleSentences,
         tags, synonmys, oppositeMeanings, WordType.VERB);
     
-    this.tenseForms = tenseForms;
+//    this.tenseForms = tenseForms;
   }
 
-  public Map<Tense, String> getTenseForms() {
-    return tenseForms;
-  }
-
-  public void setTenseForms(Map<Tense, String> tenseForms) {
-    this.tenseForms = tenseForms;
-  }
-  
-  public Verb putTenseForm(Tense tense, String form) {
-    this.tenseForms.put(tense, form);
-    
-    return this;
-  }
+//  public Map<Tense, String> getTenseForms() {
+//    return tenseForms;
+//  }
+//
+//  public void setTenseForms(Map<Tense, String> tenseForms) {
+//    this.tenseForms = tenseForms;
+//  }
+//  
+//  public Verb putTenseForm(Tense tense, String form) {
+//    this.tenseForms.put(tense, form);
+//    
+//    return this;
+//  }
   
   
 
